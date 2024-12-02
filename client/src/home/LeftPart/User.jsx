@@ -9,7 +9,7 @@ const User = () => {
   return (
     <>
       <div className="h-screen flex flex-col">
-        <h1 className="text-base font-bold bg-[#f2efe8] text-[#2a3246] px-6 py-1 mb-6">
+        <h1 className="text-base font-bold bg-[#f2efe8] text-[#2a3246] px-6 py-1 mb-2">
           Messages
         </h1>
         <ScrollArea className="custom-scroll-area ">
