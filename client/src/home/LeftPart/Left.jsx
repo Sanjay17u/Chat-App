@@ -10,7 +10,7 @@ const Left = () => {
           <h1 className='flex flex-col h-screen bg-[#faf8f6] w-[30%] border border-black'>
             <Search/>
             <User/>
-            {/* <Logout/> */}
+            <Logout/>
           </h1>
         </>
     )
