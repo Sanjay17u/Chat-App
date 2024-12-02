@@ -13,7 +13,7 @@ const UserAccounts = () => {
         </Avatar>
         <div>
           <h1 className="font-semibold">Sanjay Solanki</h1>
-          <span className="text-xs">Sanjay@Dev.com</span>
+          <span className="text-xs text-gray-500">Sanjay@Dev.com</span>
         </div>
         </div>
     </>
