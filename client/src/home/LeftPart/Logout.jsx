@@ -11,7 +11,7 @@ import {
 const Logout = () => {
   return (
     <>
-      <div className="flex w-full max-w-sm items-center space-x-2 px-6 py-4 place-items-center sm:max-w-md md:max-w-lg lg:max-w-xl">
+      <div className="flex w-full max-w-sm items-center space-x-2 px-6 py-4 mt-5 place-items-center sm:max-w-md md:max-w-lg lg:max-w-xl">
       <HoverCard>
         <HoverCardTrigger>
           <Button
