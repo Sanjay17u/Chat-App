@@ -12,7 +12,6 @@ const User = () => {
         <h1 className="text-base font-bold bg-[#f2efe8] text-[#2a3246] px-6 py-1 mb-6">
           Messages
         </h1>
-        {/* w-full rounded-md border p-4 overflow-y-auto */}
         <ScrollArea className="custom-scroll-area ">
           <UserAccounts/>
           <UserAccounts/>
