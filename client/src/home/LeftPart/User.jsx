@@ -29,7 +29,7 @@ const User = () => {
           <UserAccounts/>
           <UserAccounts/>
         </ScrollArea>
-        </div>
+      </div>
     </>
   );
 };

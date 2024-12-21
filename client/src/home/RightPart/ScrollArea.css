@@ -1,6 +1,6 @@
 /* Custom ScrollArea styling */
-.custom-scroll-area {
-    height: calc(100vh - 13rem); /* Adjust height to fit within the screen, accounting for the header */
+.custom-scroll-area2 {
+    height: calc(100vh - 8rem); /* Adjust height to fit within the screen, accounting for the header */
     width: 100%;
     border-radius: 8px;  /* Optional, adjust as needed */
     padding: 16px;  /* Optional, adjust for internal spacing */

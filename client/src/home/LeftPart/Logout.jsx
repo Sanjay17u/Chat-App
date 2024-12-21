@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { LogOut, SearchIcon } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 import {
   HoverCard,
   HoverCardContent,
@@ -26,7 +26,7 @@ const Logout = () => {
           </Button>
         </HoverCardTrigger>
         <HoverCardContent className="text-sm font-bold w-fit text-[#ff0055]">
-          Logout Now.!
+          Logout
         </HoverCardContent>
       </HoverCard>
     </div>
