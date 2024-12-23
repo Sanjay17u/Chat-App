@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser';
 const app = express()
 
 
@@ -11,6 +12,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"))
+app.use(cookieParser());
 
 try {
     mongoose.connect(MONGODB_URI)

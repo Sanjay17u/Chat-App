@@ -1,3 +1,4 @@
+import { createTokenAndSaveCookie } from '../jwt/generateToken.js';
 import { User } from '../models/users.model.js'
 import bcrypt from 'bcryptjs'
 
@@ -15,22 +16,78 @@ export const signup = async (req, res) => {
                 error: "User Already Registered"
             })
         }
-
-        const hashPassword = await bcrypt.hash(password, 10)
+        const salt = await bcrypt.genSalt(10)
+        const hashPassword = await bcrypt.hash(password, salt)
 
         const newUser = await new User({
             fullname,
             email,
             password: hashPassword,
         })
-        await newUser.save()
-        res.status(201).json({
-            message: "User Created Successfully"
-        })
+        
+        await newUser.save();
+
+        if(newUser) {
+            createTokenAndSaveCookie(newUser._id, res)
+            res.status(201).json({
+                message: "User Created Successfully",
+                newUser
+            })
+        }
     } catch (error) {
         console.log(error)
         res.status(500).json({
             error: "Internal Server Error While Creating User Check User Controller."
         })       
+    }
+}
+
+export const login = async (req, res) => {
+    const { email, password } = req.body
+    try {
+        const user = await User.findOne({ email })
+
+        console.log("Hashed password in DB:", user.password);
+        console.log("Entered password:", password);
+        
+        const isMatch = await bcrypt.compare(password, user.password)
+        console.log(isMatch)
+
+       
+        if(!user || !isMatch) {
+            return res.status(400).json({
+                error: "Invalid User Credentials"
+            })
+        }
+
+        createTokenAndSaveCookie(user._id, res)
+
+        res.status(200).json({
+            message: "User logged in Successfully", 
+            user:{
+                _id: user._id,
+                fullname: user.fullname,
+                email: user.email,
+            }
+        });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            error: "Internal Server Error While Login Check Login Controller."
+        });
+    }
+};
+
+export const logout = async (req, res) => {
+    try {
+        res.clearCookie("jwt")
+        res.status(200).json({
+            message: "User Log Out Successfully"
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            error: "Internal Server Error While Login Check Logout Controller."
+        })
     }
 }
