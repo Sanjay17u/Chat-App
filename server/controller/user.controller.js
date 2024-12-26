@@ -14,7 +14,7 @@ export const signup = async (req, res) => {
         if(user) {
             return res.status(400).json({
                 error: "User Already Registered"
-            })
+            });
         }
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password, salt)
@@ -31,7 +31,11 @@ export const signup = async (req, res) => {
             createTokenAndSaveCookie(newUser._id, res)
             res.status(201).json({
                 message: "User Created Successfully",
-                newUser
+                user:{
+                    _id: newUser._id,
+                    fullname: newUser.fullname,
+                    email: newUser.email,
+                }
             })
         }
     } catch (error) {

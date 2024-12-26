@@ -5,8 +5,12 @@ import { Button } from './ui/button.tsx';
 import { Link } from 'react-router';
 import { useForm } from 'react-hook-form'
 import axios from "axios"
+import { useAuth } from '../context/Authprovider.jsx';
 
 const Signup = () => {
+
+    const [authUser, setAuthUser] = useAuth()
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const password = watch("password", "")
@@ -16,7 +20,8 @@ const Signup = () => {
         return value === password || "Password Do Not Match"
     }
 
-    const apiUrl = import.meta.env.VITE_API_URL
+    const apiUrl = import.meta.env.VITE_API_URL;
+
 
     const onSubmit = async (data) => {
         // console.log(data)
@@ -27,13 +32,20 @@ const Signup = () => {
             confirmPassword: data.confirmPassword
         }
         console.log(userInfo)
-        axios.post("http://localhost:8000/api/v1/user/signup", userInfo)
+        await axios.post(`${apiUrl}/api/v1/user/signup`, userInfo)
         .then((response) => {
             console.log(response)
-            alert("Signup Successfull")
+            if(response.data) {
+              alert("Signup Successfully")
+            }
+            localStorage.setItem("ChatApp", JSON.stringify(response.data))
+            setAuthUser(response.data);
         })
         .catch((error) => {
             console.log(error)
+            if(error.response) {
+              alert(`Error: ${error.response.data.error}`)
+            }
         })
     };
   return (
@@ -78,9 +90,9 @@ const Signup = () => {
           <div className="text-center">
             <span className="text-sm text-gray-600">
               Already Have an Account?{' '}
-              {/* <Link to="/login" className="text-blue-500 hover:underline">
+              <a to="/login" className="text-blue-500 hover:underline">
                 Login
-              </Link> */}
+              </a>
             </span>
           </div>
 
