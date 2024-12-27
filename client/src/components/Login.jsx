@@ -29,6 +29,8 @@ const Login = () => {
         localStorage.setItem("ChatApp", JSON.stringify(response.data))
         setAuthUser(response.data);
 
+    }, {
+      withCredentials: true,
     })
     .catch((error) => {
         console.log(error)
@@ -65,9 +67,9 @@ const Login = () => {
           <div className="text-center">
             <span className="text-sm text-gray-600">
               Dont&apos;t Have an Account?{' '}
-              <a to="/login" className="text-blue-500 hover:underline">
+              <Link to="/signup" className="text-blue-500 hover:underline">
                 Signup
-              </a>
+              </Link>
             </span>
           </div>
 
