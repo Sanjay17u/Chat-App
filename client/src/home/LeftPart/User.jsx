@@ -4,8 +4,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import UserAccounts from "./UserAccounts";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import './ScrollArea.css'
+import useGetAllUsers from "../../context/useGetAllUsers.jsx";
 
 const User = () => {
+
+  const [allUsers, setAllUsers] = useGetAllUsers()
+
   return (
     <>
       <div className="h-screen flex flex-col">
