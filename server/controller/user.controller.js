@@ -104,4 +104,4 @@ export const allUsers = async (req, res) => {
     } catch (error) {
         console.log('Error While Getting All Users : ', error)        
     }
-} 
+}
