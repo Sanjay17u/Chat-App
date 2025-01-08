@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
+    "jsx": "react-jsx" // Keep this option if not already set
+  }
+}
