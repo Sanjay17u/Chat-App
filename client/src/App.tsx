@@ -1,25 +1,20 @@
-import React from 'react';
-import './App.css';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useRef, useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+interface Message {
+  type: 'message';
+  sender: string;
+  content: string;
+  timestamp: number;
 }
 
-export default App;
+const App: React.FC = () => {
+  return(
+    <>
+      
+    </>
+  )
+}
+
+export default App

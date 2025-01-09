@@ -2,6 +2,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "types": ["jest", "node"],
-    "jsx": "react-jsx" // Keep this option if not already set
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "noEmit": true  // Or "emitDeclarationOnly": true
   }
 }
